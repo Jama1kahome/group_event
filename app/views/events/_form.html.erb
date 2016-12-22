@@ -1,0 +1,20 @@
+<%= form_for(event) do |f| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.text_area :name %>
+    <%= f.text_area :description %>
+    <%= f.text_area :date %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
