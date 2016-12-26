@@ -4,8 +4,4 @@ class HomeController < ApplicationController
       redirect_to events_path
     end
   end
-  def profile
-    @title = 'user profile'
-  end
-
 end

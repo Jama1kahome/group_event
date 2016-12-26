@@ -1,0 +1,13 @@
+<%= render 'friends/lookup' %>
+<% if @friendships.size > 0 %>
+    <% @friendships.each do |friend| %>
+      <p>
+        <td> <%= friend.email %></td>
+        <td> <%= link_to 'View Profile', user_path(friend) %></td>
+        <td> <%= link_to 'Remove Friend', friendship_path(friend), :method => :delete %></td>
+    <%end%>
+    </p>
+
+<%else%>
+<p>No friends yet</p>
+<% end %>

@@ -1,0 +1,30 @@
+<h2>search friends</h2>
+
+<%= form_tag search_friends_path method: :get do %>
+  <%= text_field_tag :search_param, params[:search_param] %>
+    <%= button_tag(type: submit_tag) do %>
+      look up a friend
+    <% end %>
+<%end%>
+
+<%#= render 'common/spinner' %>
+<% if @users %>
+    <% if @users.size > 0  %>
+        <p>
+          search results
+        </p>
+        <p>
+          <% @users.each do |user| %>
+              <%= user.email %>
+              <%= link_to 'View Profile', user_path(user) %>
+                  <% if current_user.not_friends_with?(user.id) %>
+                  <%= link_to 'Add as Friend', add_friend_path(user: current_user, friend: user) %>
+                  <%else%>
+                  <p>Allready friends</p>
+                  <%end%>
+          <%end%>
+        </p>
+    <% else %>
+        <p>No friends to add</p>
+     <%end%>
+<%end%>
